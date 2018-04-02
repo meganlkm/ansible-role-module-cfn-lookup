@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles:
+    - ./
+  post_tasks:
+    - debug: var=stack_outputs

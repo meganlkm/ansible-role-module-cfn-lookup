@@ -1,0 +1,8 @@
+- name: Look up stack outputs by stack name
+  cfn_lookup:
+    stack_name: "{{ item.stack_name }}"
+    fact: "{{ item.fact_name }}"
+    region: "{{ region | default(['us-west-2']) }}"
+    fact_type: "{{ item.fact_type | default(omit) }}"
+  with_items: "{{ cfn_lookup_stacks | default([]) }}"
+  register: outputs
